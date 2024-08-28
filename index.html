@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" /> 
+    <style>
+        @keyframes initializeAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        /* Custom styles */
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: sans-serif;
+        }
+        .anim-on-initialize {
+            animation: initializeAnimation 1.0s forwards;
+        }
+        .hero-background {
+            background-color: #F2F1FFFF; /* Solid background color */
+            position: relative;
+            overflow: hidden;
+        }
+        .grid-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                90deg,
+                #BF9CFF8F,
+                #BF9CFF8F 1px, /* Line width */
+                transparent 1px,
+                transparent 90px /* Grid spacing */
+            ),
+            repeating-linear-gradient(
+                0deg,
+                #BF9CFF8F,
+                #BF9CFF8F 1px, /* Line width */
+                transparent 1px,
+                transparent 90px /* Grid spacing */
+            ),
+            linear-gradient(
+                90deg,
+                #F2F1FF9F 20%,
+                transparent 100%
+            );
+            background-blend-mode: overlay;
+            mask: radial-gradient(circle at 50%, white 10%, transparent 60%);
+            mask-position: 0, 0;
+            mask-size: 900px 900px;
+            mask-repeat: no-repeat;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #F2F1FF, #B5A0FF);
+        }
+        .footer-bg {
+            background: #9C8CFF;
+        }
+        .bg-primary {
+            background-color: #F2F1F7; /* FrameBg */
+        }
+        .bg-secondary {
+            background-color: #F2F1FF; /* WindowBg */
+        }
+        .text-primary {
+            color: #3B4252; /* TextPrimary */
+        }
+        .text-secondary {
+            color: #6C6E6F; /* TextSecondary */
+        }
+        .text-highlight {
+            color: #9C8CFF; /* TextSelectedBg */
+        }
+        .nav-link:hover {
+            color: #9C8CFF; /* TextSelectedBg */
+        }
+        .border-primary {
+            border-color: #D8DEE9; /* Border */
+        }
+        .btn-primary {
+            background-color: #AA9CFF; /* Button */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
+        }
+        .btn-primary-hover:hover {
+            background-color: #B5A0FF; /* ButtonHovered */
+            transform: scale(1.05); /* Slightly enlarge the button */
+        }
+        .btn-primary-active:active {
+            background-color: #BF9CFF; /* ButtonActive */
+            transform: scale(0.95); /* Slightly shrink the button */
+        }
+        .header-bg {
+            background-color: #D8DEE9; /* Header */
+        }
+        .header-hover-bg:hover {
+            background-color: #E0E1E9; /* HeaderHovered */
+        }
+        .tab-bg {
+            background-color: #D8DEE9; /* Tab */
+        }
+        .tab-selected-bg {
+            background-color: #F2F1F7; /* TabSelected */
+        }
+
+        /* Animation styles */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.9s forwards;
+        }
+    </style>
+</head>
+<body class="bg-secondary text-primary">
+
+    <!-- Navbar -->
+    <nav class="bg-primary text-primary py-1 shadow-md border-b border-border-primary fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#"><img class="w-10" src="icons/logo-small.svg" alt="Logo"></a>
+            <ul class="flex space-x-6">
+                <li><a href="#features" class="transition-colors duration-150 nav-link">Features</a></li>
+                <li><a href="#download" class="transition-colors duration-150 nav-link">Download</a></li>
+                <li><a href="#github" class="transition-colors duration-150 nav-link">Github</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-background anim-on-initialize h-screen flex items-center relative grid-container">
+        <div class="grid-lines"></div> <!-- Grid lines effect -->
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between relative z-10">
+            <!-- Title and Text -->
+            <div class="text-center md:text-left w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                <img src="icons/logo-mid.svg" alt="Crystal Title" class="title-image">
+                <p class="text-lg md:text-2xl mb-8">A minimal code editor with all the gems</p>
+                <a href="#download" class="btn-primary btn-primary-hover btn-primary-active text-white font-bold py-2 px-6 rounded-lg">Get Started</a>
+            </div>
+            <!-- Image -->
+            <div class="w-full md:w-2/2">
+                <!-- <img src="https://via.placeholder.com/600x400" alt="Code Editor" class="rounded-lg shadow-lg mx-auto"> -->
+                <img src="images/screenshot.png" alt="Code Editor" class="rounded-lg mx-auto">
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary fade-in-up">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="bg-primary p-6 rounded-lg shadow-sm border border-border-primary fade-in-up">
+                    <h3 class="text-xl font-semibold mb-4 text-highlight">Syntax Highlighting</h3>
+                    <p>Enhance your coding experience with powerful syntax highlighting for multiple programming languages.</p>
+                    <div class="text-3xl">
+                        <i class="devicon-cplusplus-plain"></i>
+                        <i class="devicon-c-plain"></i>
+                        <i class="devicon-java-plain"></i>
+                        <i class="devicon-javascript-plain"></i>
+                        <i class="devicon-typescript-plain"></i>
+                        <i class="devicon-lua-plain"></i>
+                        <i class="devicon-rust-original"></i>
+                    </div>
+                </div>
+                <div class="bg-primary p-6 rounded-lg shadow-sm border border-border-primary fade-in-up">
+                    <h3 class="text-xl font-semibold mb-4 text-highlight">Customizable Themes</h3>
+                    <p>Choose from a variety of themes or create your own to match your personal style.</p>
+                    <div class="inline-flex items-baseline">
+                        <img src="icons/nord.svg" class="w-8">
+                        <img src="icons/one-dark.svg" class="w-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="gradient-bg text-primary py-16 fade-in-up">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Download Crystal</h2>
+            <p class="text-lg mb-8">Become a true sigma male and download</p>
+            <a href="https://github.com/boxDev2008/Crystal/releases" class="btn-primary btn-primary-hover btn-primary-active text-white font-bold py-3 px-6 rounded-lg">Download Now</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="github" class="py-16 fade-in-up">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-primary">Check the Github</h2>
+            <div class="inline-flex items-baseline gap-8">
+                <div class="flex justify-center items-center pb-4"><img class="w-24" src="icons/github.svg" alt="Github"></div>
+                <div class="flex justify-center items-center pb-4"><img class="w-24" src="icons/mit.svg" alt="MIT"></div>
+            </div>
+            <p class="text-lg mb-8">Clone or fork the repository for contributing</p>
+            <a href="https://github.com/boxDev2008/Crystal" class="btn-primary btn-primary-hover btn-primary-active text-white font-bold py-3 px-6 rounded-lg">Go to Github</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bg text-white py-3 border-t border-border-primary">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Crystal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('mousemove', (event) => {
+            const gridContainer = document.querySelector('.grid-container');
+            const gridLines = document.querySelector('.grid-lines');
+            
+            // Get mouse position relative to the grid container
+            const rect = gridContainer.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+            
+            // Update the mask position
+            gridLines.style.maskPosition = `${mouseX - 450}px ${mouseY - 450}px`;
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in-up');
+            
+            const checkVisibility = () => {
+                elements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Initial check
+            checkVisibility();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+</body>
+</html>
